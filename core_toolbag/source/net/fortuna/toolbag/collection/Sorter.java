@@ -5,6 +5,7 @@
  */
 package net.fortuna.toolbag.collection;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -13,7 +14,9 @@ import java.util.List;
  * A collection sorter.
  * @author benfortuna
  */
-public class Sorter {
+public class Sorter implements Serializable {
+    
+    private String id;
 
     private Comparator comparator;
 
@@ -23,18 +26,8 @@ public class Sorter {
      * Constructs a new sorter based on the specified comparator.
      * @param c a comparator used to sort
      */
-    public Sorter(final Comparator c) {
-        this(c, false);
-    }
-    
-    /**
-     * Constructs a new sorter based on the specified comparator.
-     * @param c a comparator used to sort
-     * @param reverse specifies whether to reverse the sort
-     */
-    public Sorter(final Comparator c, final boolean reverse) {
-        this.comparator = c;
-        this.reverse = reverse;
+    public Sorter(final String id) {
+        this.id = id;
     }
 
     /**
@@ -84,5 +77,22 @@ public class Sorter {
      */
     public void setReverse(boolean reverse) {
         this.reverse = reverse;
+    }
+    
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    public final String toString() {
+        if (comparator != null) {
+            return comparator.toString();
+        }
+        return super.toString();
+    }
+    
+    /**
+     * @return Returns the id.
+     */
+    public final String getId() {
+        return id;
     }
 }
