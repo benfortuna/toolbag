@@ -6,11 +6,16 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * @author Ben Fortuna
  *  
  */
 public class Filter {
+    
+    private static Log log = LogFactory.getLog(Filter.class);
 
     private Rule[] rules;
 
@@ -74,11 +79,15 @@ public class Filter {
      * @return a filtered array
      */
     public final Object[] filter(final Object[] objects) {
-
         Collection filtered = filter(Arrays.asList(objects));
-
-        return filtered.toArray((Object[]) Array.newInstance(
-                objects.getClass(), filtered.size()));
+        try {
+            return filtered.toArray((Object[]) Array.newInstance(
+                    objects.getClass(), filtered.size()));
+        }
+        catch (ArrayStoreException ase) {
+            log.warn("Error converting to array - using default approach", ase);
+        }        
+        return filtered.toArray();
     }
     
     /**
