@@ -30,11 +30,17 @@ package net.fortuna.toolbag.ui.util;
  */
 public final class Actions {
 
-    public final static String PRESSED_ICON = "icon.pressed";
+    public static final String PRESSED_ICON = "icon.pressed";
 
-    public final static String DISABLED_ICON = "icon.disabled";
+    public static final String DISABLED_ICON = "icon.disabled";
 
-    public final static String ROLLOVER_ICON = "icon.rollover";
+    public static final String ROLLOVER_ICON = "icon.rollover";
+    
+    public static final String HORIZONTAL_TEXT_POSITION = "textPosition.horizontal"; 
+    
+    public static final String VERTICAL_TEXT_POSITION = "textPosition.vertical";
+    
+    public static final String FONT_WEIGHT = "font.weight";
     
     /**
      * Constructor made private to prevent instantiation.
