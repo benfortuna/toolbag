@@ -102,12 +102,12 @@ public abstract class WizardPane extends JPanel implements OptionPane,
                  * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
                  */
                 protected final void paintComponent(final Graphics g) {
-
-                    ((Graphics2D) g).setRenderingHint(
+                    Graphics2D g2d = (Graphics2D) g.create();
+                    g2d.setRenderingHint(
                             RenderingHints.KEY_ANTIALIASING,
                             RenderingHints.VALUE_ANTIALIAS_ON);
-
-                    super.paintComponent(g);
+                    super.paintComponent(g2d);
+                    g2d.dispose();
                 }
             };
 

@@ -77,12 +77,12 @@ public abstract class TitledPane extends JPanel {
                  * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
                  */
                 protected void paintComponent(Graphics g) {
-
-                    ((Graphics2D) g).setRenderingHint(
+                    Graphics2D g2d = (Graphics2D) g.create();
+                    g2d.setRenderingHint(
                             RenderingHints.KEY_ANTIALIASING,
                             RenderingHints.VALUE_ANTIALIAS_ON);
-
-                    super.paintComponent(g);
+                    super.paintComponent(g2d);
+                    g2d.dispose();
                 }
 
             };

@@ -80,6 +80,7 @@ public class TexturePane extends JPanel {
      * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
      */
     protected void paintComponent(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g.create();
 
         Dimension ib = new Dimension(image.getWidth(null), image
                 .getHeight(null));
@@ -91,18 +92,17 @@ public class TexturePane extends JPanel {
         TexturePaint paint = new TexturePaint(bim, new Rectangle(ib.width,
                 ib.height));
 
-        ((Graphics2D) g).setPaint(paint);
+        g2d.setPaint(paint);
 
         if (alignment == VERTICAL) {
-
-            g.fillRect(0, 0, ib.width, getHeight());
+            g2d.fillRect(0, 0, ib.width, getHeight());
         }
         else {
-
-            g.fillRect(0, 0, getWidth(), ib.height);
+            g2d.fillRect(0, 0, getWidth(), ib.height);
         }
 
-        super.paintComponent(g);
+        super.paintComponent(g2d);
+        g2d.dispose();
     }
 
     public void loadImage(Image image) {

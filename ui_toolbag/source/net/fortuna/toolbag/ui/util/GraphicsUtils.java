@@ -163,9 +163,8 @@ public final class GraphicsUtils {
      */
     public static void clear(final Graphics g, final Rectangle bounds,
             final Color colour, final boolean gradient) {
-        Graphics2D g2 = (Graphics2D) g;
+        Graphics2D g2d = (Graphics2D) g.create();
         Paint paint;
-
         if (gradient) {
             paint = new GradientPaint(bounds.x, bounds.y, colour, bounds.width,
                     bounds.height, new Color(~colour.getRGB()));
@@ -173,8 +172,8 @@ public final class GraphicsUtils {
         else {
             paint = colour;
         }
-
-        g2.setPaint(paint);
-        g2.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+        g2d.setPaint(paint);
+        g2d.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+        g2d.dispose();
     }
 }

@@ -226,18 +226,19 @@ public class BooFar extends JComponent implements Runnable {
         repaint();
     }
 
-    public void paintComponent(Graphics g) {
-        
-        super.paintComponent(g);
-        
+    public void paintComponent(Graphics g) {        
+        super.paintComponent(g);        
         if (isOpaque()) {
             g.setColor(getBackground());
             g.fillRect(0, 0, getWidth(), getHeight());
         }
         
+        Object origRh = null;
         if (JAVA_VERSION) {
             // If Java 1.2 or greater, set Graphics2D properties...
-            ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+            Graphics2D g2d = (Graphics2D) g;
+            origRh = g2d.getRenderingHint(RenderingHints.KEY_ANTIALIASING);
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
         }
 
@@ -276,6 +277,10 @@ public class BooFar extends JComponent implements Runnable {
                 .getEyeballCenter().y
                 - getRightEye().getEyeballSize().height / 2, getRightEye()
                 .getEyeballSize().width, getRightEye().getEyeballSize().height);
+        
+        if (origRh != null) {
+            ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, origRh);
+        }
     }
 
     protected void processMouseMotionEvent(MouseEvent e) {

@@ -138,21 +138,22 @@ public class JvmStatistics extends JComponent {
     
     private void drawMemoryGraph(final int x, final int y, final int width, final int height, final Graphics g) {
 //        Dimension size = getSize();
+        Graphics2D g2d = (Graphics2D) g.create();
         Stroke dashed = new BasicStroke(1, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10, new float[] {5, 3, 2, 3}, 0);
-        ((Graphics2D) g).setStroke(dashed);        
-        g.setColor(Color.LIGHT_GRAY);
-        g.setFont(new Font(g.getFont().getFamily(), g.getFont().getStyle(), 9));
+        g2d.setStroke(dashed);        
+        g2d.setColor(Color.LIGHT_GRAY);
+        g2d.setFont(new Font(g2d.getFont().getFamily(), g2d.getFont().getStyle(), 9));
         
         Stat maxStat = (Stat) Collections.max(stats);
         
         for (int i = 1; i <= 6; i++) {
             int yOffset = (i + 1) * (height / 6); 
-            g.drawString(DataSizeFormat.getInstance().format(new Long(maxStat.getTotalMemory() / (long) i).intValue()), x, yOffset);
-            g.drawLine(x + 30, yOffset, x + width, yOffset);
+            g2d.drawString(DataSizeFormat.getInstance().format(new Long(maxStat.getTotalMemory() / (long) i).intValue()), x, yOffset);
+            g2d.drawLine(x + 30, yOffset, x + width, yOffset);
         }
 
-        ((Graphics2D) g).setStroke(new BasicStroke());        
-        g.setColor(getForeground());
+        g2d.setStroke(new BasicStroke());        
+        g2d.setColor(getForeground());
         Stat stat = null;
         Stat prevStat = null;
         int index = 0;
@@ -171,12 +172,13 @@ public class JvmStatistics extends JComponent {
                 log.debug("stat 2 x: " + (int) (width * ((index + 1) / (float) stats.size())));
                 log.debug("stat 2 y: " + (int) (height * (stat.getFreeMemory() / (float) maxStat.getTotalMemory())));
                 
-                g.drawLine(x + (int) (width * (index / (float) stats.size())),
+                g2d.drawLine(x + (int) (width * (index / (float) stats.size())),
                             y + (int) (height * (prevStat.getFreeMemory() / (float) maxStat.getTotalMemory())),
                             x + (int) (width * ((index + 1) / (float) stats.size())),
                             y + (int) (height * (stat.getFreeMemory() / (float) maxStat.getTotalMemory())));
             }
         }
+        g2d.dispose();
     }
 
     private void drawThreadGraph(final int x, final int y, final int width, final int height, final Graphics g) {

@@ -103,13 +103,14 @@ public abstract class AbstractCellRenderer extends JTextPane implements
          */
 
         if (antialias) {
-
-            Graphics2D g2 = (Graphics2D) g;
-
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
+            super.paintComponent(g2d);
+            g2d.dispose();
         }
-
-        super.paintComponent(g);
+        else {
+            super.paintComponent(g);
+        }
     }
 }
