@@ -30,7 +30,7 @@
 		</delete>
 	</target>
 	
-	<target name="package" depends="compile, clean-package">
+	<target name="package" depends="compile">
 		<manifest file="etc/manifest.mf">
 			<attribute name="Class-Path" value="commons-logging.jar icons.jar" />
 		</manifest>
