@@ -112,7 +112,7 @@ public class ConfigPane extends JPanel implements OptionPane {
         dialog = WindowUtils.createDialog(parent, this, title, true);
         dialog.setResizable(false);
         dialog.setModal(true);
-        dialog.show();
+        dialog.setVisible(true);
 
         return getOption();
     }

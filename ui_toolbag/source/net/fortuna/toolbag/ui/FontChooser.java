@@ -196,7 +196,7 @@ public class FontChooser extends JPanel implements ListSelectionListener {
             okButton.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    dialog.hide();
+                    dialog.setVisible(false);
                 }
             });
 
@@ -205,7 +205,7 @@ public class FontChooser extends JPanel implements ListSelectionListener {
 
                 public void actionPerformed(ActionEvent e) {
                     chooser.setSelectedFont(null);
-                    dialog.hide();
+                    dialog.setVisible(false);
                 }
             });
 

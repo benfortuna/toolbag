@@ -253,7 +253,7 @@ public abstract class WizardPane extends JPanel implements OptionPane,
                 "touchbase - New Profile", true);
         dialog.setResizable(false);
         dialog.setModal(true);
-        dialog.show();
+        dialog.setVisible(true);
 
         return option;
     }
