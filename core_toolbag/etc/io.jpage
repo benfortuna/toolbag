@@ -1,0 +1,39 @@
+//java.io.InputStream in = com.bfore.touchbase.common.IoUtils.openInputStream("http://www.yahoo.com");
+java.io.InputStream in = com.bfore.touchbase.common.IoUtils.openInputStream("http://localhost:8080/touchbase/","bookmarks");
+//java.io.InputStream in = com.bfore.touchbase.common.IoUtils.openInputStream("d:/temp/blankout.jnlp");
+//java.io.InputStream in = com.bfore.touchbase.common.IoUtils.openInputStream("d:/temp","blankout.jnlp");
+
+System.out.println(in);
+
+//com.ibm.webdav.Resource r = new com.ibm.webdav.Resource("http://localhost:8080/webdav/touchbase/profiles.xml");
+
+com.ibm.webdav.Resource r = new com.ibm.webdav.Resource("http://www.sharemation.com/benfortuna/touchbase/profiles.xml");
+r.getRequestContext().setBasicAuthorization("benfortuna","blw550");
+//System.out.println(r.getContents());
+//java.io.BufferedReader in = new java.io.BufferedReader(new java.io.InputStreamReader(r.getContentsInputStream()));
+
+//java.io.InputStream in = r.getContentsInputStream();
+
+System.out.println("Resource contents:");
+
+System.out.println(new String(r.getContents()));
+
+/*
+String line = null;
+
+while ((line = in.readLine()) != null) {
+	System.out.print(line);
+}
+*/
+
+java.net.URL url = new java.net.URL("http://members.aardvark.net.au/benfortuna/albums/index.html");
+
+java.net.URL newUrl = new java.net.URL(com.bfore.touchbase.common.IoUtils.getUrlBase(url),"Kenya 2001/album.html");
+
+System.out.println(newUrl);
+
+java.io.File file = new java.io.File("d:/ben/touchbase/profiles.xml");
+
+java.io.File newFile = new java.io.File(com.bfore.touchbase.common.IoUtils.getFileBase(file),"benfortuna@hotpop.com/bookmarks.xml");
+
+System.out.println(newFile);

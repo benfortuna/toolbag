@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<module id="net.fortuna.toolbag.ui" version="0.1">
+	<name>ui:toolbag</name>
+	<description>A Java utility library for user interfaces</description>
+	<vendor>Ben Fortuna</vendor>
+	<jar href="uitoolbag.jar"/>
+	<jar href="crystal.zip"/>
+</module>

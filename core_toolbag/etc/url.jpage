@@ -1,0 +1,2 @@
+new java.io.File(".touchbase/touchbase.properties").toURL().toString();
+new java.io.File(".touchbase/touchbase.properties").toURI().toString();

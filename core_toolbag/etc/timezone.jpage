@@ -1,0 +1,3 @@
+java.util.TimeZone t = java.util.TimeZone.getDefault();
+
+System.out.println(t.getDisplayName());

@@ -1,0 +1,1 @@
+net.fortuna.toolbag.ui.alert.AlertManager.getInstance().register(new net.fortuna.toolbag.ui.alert.BooAlert());

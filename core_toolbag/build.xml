@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<project name="core_toolbag" basedir="." default="package">
+
+	<property name="project.version" value="0.1"/>
+	<property name="source.dir" location="source"/>
+	<property name="output.dir" location="bin"/>
+	<property name="package.dir" location="build"/>
+	<property name="package.file" value="core_toolbag.jar"/>
+	<property name="package.launcher.file" value="launcher.jar"/>
+	<property name="javadoc.dir" location="docs/api"/>
+	<property name="javadoc.packages" value="net.fortuna.toolbag.*"/>
+	<property name="dist.dir" location=".."/>
+	<property name="dist.name" value="toolbag"/>
+	<property name="module.name" value="net.fortuna.toolbag"/>
+	<property name="module.descriptor" value="module.xml"/>
+	<property name="plugin.name" value="net.fortuna.toolbag"/>
+	
+	<target name="clean-compile">
+		<mkdir dir="${output.dir}"/>
+		<delete>
+			<fileset dir="${output.dir}"/>
+		</delete>
+	</target>
+	
+	<target name="compile">
+		<javac srcdir="${source.dir}" destdir="${output.dir}" classpath="lib/commons-logging.jar" debug="false" deprecation="true"/>
+	</target>
+	
+	<target name="clean-package">
+		<mkdir dir="${package.dir}"/>
+		<delete>
+			<fileset dir="${package.dir}"/>
+		</delete>
+	</target>
+	
+	<target name="package" depends="compile, clean-package">
+		<manifest file="etc/manifest.mf">
+			<!-- Add manifest attributes here.. -->
+			<attribute name="Class-Path" value="commons-logging.jar" />
+		</manifest>
+		<jar basedir="${output.dir}" compress="true" jarfile="${package.dir}/${package.file}" manifest="etc/manifest.mf"/>
+	</target>
+	
+	<target name="package-launcher" depends="compile">
+		<manifest file="etc/manifest.mf">
+			<!-- Add manifest attributes here.. -->
+			<attribute name="Class-Path" value="lib/ lib/commons-logging.jar lib/log4j-1.2.8.jar lib/jdom.jar" />
+			<attribute name="Main-Class" value="net.fortuna.toolbag.module.ModuleLauncher" />
+		</manifest>
+		<jar basedir="${output.dir}" 
+			compress="true" 
+			jarfile="${package.dir}/${package.launcher.file}" 
+			manifest="etc/manifest.mf"
+			includes="net/fortuna/toolbag/module/**"
+		/>
+	</target>
+	
+	<target name="sign" depends="package">
+		<signjar jar="${package.dir}/${package.file}" alias="ben" storepass="blw550"/>
+	</target>
+	
+	<target name="clean-javadoc">
+		<mkdir dir="${javadoc.dir}"/>
+		<delete>
+			<fileset dir="${javadoc.dir}"/>
+		</delete>
+	</target>
+	
+	<target name="javadoc" depends="clean-javadoc">
+		<javadoc sourcepath="${source.dir}"
+				 destdir="${javadoc.dir}"
+				 packagenames="${javadoc.packages}"
+				 Windowtitle="${ant.project.name}"
+				 Doctitle="${ant.project.name}"
+				 Overview="etc/overview.html">
+		</javadoc>
+	</target>
+
+	<!-- source distribution -->
+	<target name="dist-src" depends="clean-compile, clean-package, javadoc">
+		<zip zipfile="${dist.dir}/${dist.name}-${project.version}-src.zip">
+			<zipfileset dir="." prefix="${dist.name}-${project.version}"/>
+		</zip>
+	</target>
+
+	<!-- binary distribution -->
+	<target name="dist" depends="clean-package, package, package-launcher, javadoc">
+		<zip zipfile="${dist.dir}/${dist.name}-${project.version}.zip">
+			<zipfileset dir="docs" prefix="${dist.name}-${project.version}/docs"/>
+			<zipfileset dir="${package.dir}" prefix="${dist.name}-${project.version}/lib"/>
+			<zipfileset dir="lib" prefix="${dist.name}-${project.version}/lib"/>
+		</zip>
+	</target>
+
+	<target name="dist-module" depends="clean-package, package">
+		<zip zipfile="${dist.dir}/${module.name}-${project.version}.zip">
+			<zipfileset dir="." prefix="${module.name}-${project.version}" includes="LICENSE,CHANGELOG,README"/>
+			<zipfileset dir="docs" prefix="${module.name}-${project.version}/docs" excludes="api/**"/>
+			<zipfileset dir="${package.dir}" prefix="${module.name}-${project.version}"/>
+			<zipfileset dir="etc" prefix="${module.name}-${project.version}" includes="${module.descriptor}"/>
+		</zip>
+	</target>
+
+	<target name="dist-plugin" depends="package, javadoc">
+		<zip zipfile="${dist.dir}/${plugin.name}_${project.version}.zip">
+			<zipfileset dir="." prefix="${plugin.name}_${project.version}" includes="LICENSE,CHANGELOG,README"/>
+			<zipfileset dir="docs" prefix="${plugin.name}_${project.version}/docs"/>
+			<zipfileset dir="${package.dir}" prefix="${plugin.name}_${project.version}/lib"/>
+			<zipfileset dir="lib" prefix="${plugin.name}_${project.version}/lib"/>
+			<zipfileset dir="etc" prefix="${plugin.name}_${project.version}" includes="plugin.properties,plugin.xml"/>
+		</zip>
+	</target>
+	
+</project>

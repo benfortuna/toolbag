@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<icon-set>
+	<icon id="new">
+		<default>/full/etool16/new_wiz.gif</default>
+		<rollover>/full/ctool16/new_wiz.gif</rollover>
+		<disabled>/full/dtool16/new_wiz.gif</disabled>
+	</icon>
+	<icon id="delete">
+		<default>/full/etool16/delete_edit.gif</default>
+		<rollover>/full/ctool16/delete_edit.gif</rollover>
+		<disabled>/full/dtool16/delete_edit.gif</disabled>
+	</icon>
+	<icon id="edit">
+		<default>/full/cview16/editor_view.gif</default>
+		<rollover/>
+		<disabled/>
+	</icon>
+	<icon id="cut">
+		<default>/full/etool16/cut_edit.gif</default>
+		<rollover>/full/ctool16/cut_edit.gif</rollover>
+		<disabled>/full/dtool16/cut_edit.gif</disabled>
+	</icon>
+	<icon id="copy">
+		<default>/full/etool16/copy_edit.gif</default>
+		<rollover>/full/ctool16/copy_edit.gif</rollover>
+		<disabled>/full/dtool16/copy_edit.gif</disabled>
+	</icon>
+	<icon id="paste">
+		<default>/full/etool16/paste_edit.gif</default>
+		<rollover>/full/ctool16/paste_edit.gif</rollover>
+		<disabled>/full/dtool16/paste_edit.gif</disabled>
+	</icon>
+	<icon id="search">
+		<default>/full/etool16/search_src.gif</default>
+		<rollover>/full/etool16/search_src.gif</rollover>
+		<disabled>/full/etool16/search_src.gif</disabled>
+	</icon>
+	<icon id="print">
+		<default>/full/etool16/print_edit.gif</default>
+		<rollover>/full/ctool16/print_edit.gif</rollover>
+		<disabled>/full/dtool16/print_edit.gif</disabled>
+	</icon>
+</icon-set>

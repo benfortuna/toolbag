@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!--
+  - Ant scripts for packaging icon sets.
+  -->
+<project name="iconsets" basedir="." default="package-all">
+	<property name="package.dir" location="../../build"/>
+	<property name="iconset.descriptor" value="iconset.xml"/>
+
+	<target name="package-all" depends="package-crystal"/>
+	
+	<property name="crystal.home" value="crystal"/>
+	<property name="crystal.name" value="crystal"/>
+
+	<target name="package-crystal">
+		<jar jarfile="${package.dir}/${crystal.name}.jar" basedir="${crystal.home}"/>
+	</target>
+</project>

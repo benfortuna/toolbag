@@ -1,0 +1,117 @@
+<port-list>
+  <port number="20" type="tcp">
+    <description>FTP Data</description>
+  </port>
+  <port number="21" type="tcp">
+    <description>FTP Control</description>
+  </port>
+  <port number="22" type="tcp">
+    <description>Secure Shell (ssh)</description>
+  </port>
+  <port number="23" type="tcp">
+    <description>Telnet</description>
+  </port>
+  <port number="25" type="tcp">
+    <description>SMTP (email)</description>
+  </port>
+  <port number="53" type="tcp">
+    <description>DNS</description>
+  </port>
+  <port number="70" type="tcp">
+    <description>Gopher</description>
+  </port>
+  <port number="79" type="tcp">
+    <description>Finger</description>
+  </port>
+  <port number="80" type="tcp">
+    <description>HTTP (Web)</description>
+  </port>
+  <port number="88" type="tcp">
+    <description>Kerberos</description>
+  </port>
+</port-list>
+
+
+TCP:
+===
+
+
+22 Secure Shell (ssh) ssh.com Remote login on OS X 
+23 Telnet RFC 854 Common port for attacks 
+25 SMTP (email) RFC 821, 822   
+53 DNS RFC 1034, 1035 Mainly uses UDP, not TCP 
+70 Gopher RFC 1436   
+79 Finger RFC 1288   
+80 HTTP (Web) RFC 1945   
+88 Kerberos RFC 1510   
+105 PH (directory)     
+106 Poppass (change password) Wesleyan tech note   
+110 POP3 (email) RFC 1081, 1082   
+111 Remote Procedure Call (RPC) RFC 1057 Used for many Unix applications 
+113 AUTH RFC 931   
+119 NNTP (News) RFC 977   
+139 NETBIOS Session RFCs 1001, 1002 Windows access (ASIP 6) 
+143 IMAP (new email) RFC 2060   
+311 AppleShare Web Admin ASIP Tech note ASIP 6.1 and later 
+384 ARNS (tunneling) Univ. of Melbourne   
+387 AURP (tunneling) RFC 1504   
+389 LDAP (directory) RFC 1777, 1778   
+407 Timbuktu 5.2 or later Netopia technote Previous versions use other ports 
+427 SLP (service location) RFC 2165 Only uses TCP for large responses 
+443 SSL (HTTPS) Draft RFC   
+497 Retrospect   UDP for finding clients 
+510 FirstClass server SoftArc tech note   
+515 LPR (printing) RFC 1179   
+548 AFP (AppleShare) AFP 2.2 spec   
+554 RTSP (QuickTime server) Apple tech note Also uses UDP 6970+ 
+591 FileMaker Pro Web FileMaker tech note Recommended alternate to 80 
+626 IMAP Admin   Apple extension in ASIP 6  
+631 IPP (Internet Printing Protocol) RFCs 2565-2569 Available in Mac OS X 10.2 through CUPS  
+660 ASIP Remote Admin   ASIP 6.3 and later 
+666 Now Contact Server Eudora tech note Violates actual port assignment 
+687 ASIP Shared U? Port ASIP Tech note ASIP 6.2 and later 
+1080 WebSTAR Admin WebSTAR FAQ WebSTAR port number plus 1000 
+1417 Timbuktu Control (pre-5.2) Netopia technote Login is through UDP Port 407 
+1418 Timbuktu Observe (pre-5.2) Netopia technote Login is through UDP Port 407 
+1419 Timbuktu Send Files (pre-5.2) Netopia technote Login is through UDP Port 407 
+1420 Timbuktu Exchange (pre-5.2) Netopia technote Login is through UDP Port 407 
+1443 WebSTAR/SSL Admin WebSTAR FAQ WebSTAR port number plus 1000 
+3031 Program Linking (Apple Events)   Mac OS 9 and later 
+4000 Now Public Event Server Eudora tech note   
+4199 EIMS Admin EIMS Users Guide   
+4347 LANsurveyor Responders Neon tech note Uses UDP also 
+5003 FileMaker Pro FileMaker tech note Direct access, not through Web; UDP for host list 
+5190 AOL Instant Messenger AOL tech note   
+5498 Hotline Tracker Hotline tech note UDP port 5499 for finding servers 
+5500 Hotline Server Hotline tech note   
+5501 Hotline Server Hotline tech note   
+6699 Napster/Macster client Apparent usage Used when server is in "firewall mode" 
+7070 Real Player Real tech note Also UDP ports 6970-7170 
+7648 CuSeeMe (video) White pine tech note Client connections; UDP for audio/video 
+7649 CuSeeMe (video) White pine tech note Connection establishment. 
+8080 Common HTTP alternate RFC 1945   
+19813 4D server 
+
+
+
+UDP:
+====
+
+53 DNS   Sometimes uses TCP 
+68 Dynamic Host Configuration Protocol (DHCP) RFC 2131 Commonly used to obtain a Mac's IP address 
+69 Trivial File Transfer Protocol (TFTP) RFC 783   
+123 Network Time Protocol RFC 1305   
+137 Windows Name Service RFC 1001   
+138 Windows Datagram Service RFC 1001   
+161 Simple Network Management Protocol (SNMP) RFC 1157   
+407 Timbuktu Netopia technote Handshaking only, prior to version 5.2 
+458 QuickTime TV     
+497 Retrospect   Finding clients on the network 
+514 Syslog     
+554 Real Time Streaming Protocol (QuickTime) RFC 2326   
+2049 Network File System (NFS) RFC 1813   
+3283 Apple Network Assistant TIL Note   
+5003 FileMaker Pro FileMaker tech note For obtaining host list 
+ 6970 and up QuickTime and RealPlayer TIL Note   
+7070 RTSP alternate (RealPlayer) 
+

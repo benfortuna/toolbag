@@ -1,0 +1,33 @@
+<!--
+   - [iconset.dtd] Created: 19/05/2004
+   -
+   - Copyright (c) 2004 Ben Fortuna, All Rights Reserved.
+   -
+   -
+   -  <!DOCTYPE iconset PUBLIC "-//Ben Fortuna//DTD ui:toolbag 0.9//EN"
+   -                   "http://toolbag.sourceforge.net/dtd/iconset.dtd">
+   -->
+
+<!ELEMENT iconset (name?, description?, author?, icon*)>
+<!ATTLIST iconset id ID #IMPLIED>
+
+<!ELEMENT name (#PCDATA)>
+
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT author (#PCDATA)>
+
+<!ELEMENT icon (default, rollover?, disabled?, pressed?, selected?)>
+<!ATTLIST icon id ID #IMPLIED>
+
+<!ELEMENT default (uri)>
+
+<!ELEMENT rollover (uri)>
+
+<!ELEMENT disabled (uri)>
+
+<!ELEMENT pressed (uri)>
+
+<!ELEMENT selected (uri)>
+
+<!ELEMENT uri (#PCDATA)>

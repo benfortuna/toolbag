@@ -1,0 +1,8 @@
+===============
+ SplitGridPane
+===============
+
+A grid of panes separated by JSplitPane dividers.
+
+Where a grid position is not filled by a component other grid positions
+should fill the available space and disable the appropriate dividers.

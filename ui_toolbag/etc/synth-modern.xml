@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<synth version="1">
+	<style id="default">
+		<font name="Tahoma" size="10"/>
+	</style>
+	<bind style="default" type="region" key=".*"/>
+</synth>
