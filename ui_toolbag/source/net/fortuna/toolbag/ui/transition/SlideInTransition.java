@@ -17,6 +17,8 @@ import java.awt.Window;
  */
 public class SlideInTransition extends Transition {
 
+    private static final int BOTTOM_INSET = 30;
+
     private Dimension screenSize;
 
     /**
@@ -46,7 +48,7 @@ public class SlideInTransition extends Transition {
         }
         else if (getEdge() == EDGE_BOTTOM) {
             y = screenSize.height
-                    - (int) ((frame / (float) getFrames()) * c.getSize().height);
+                    - (int) ((frame / (float) getFrames()) * (c.getSize().height + BOTTOM_INSET));
         }
         else if (getEdge() == EDGE_RIGHT) {
             x = screenSize.width

@@ -1,6 +1,6 @@
 /*
  * $Id: SlideOutTransition.java [02-May-2004]
- * 
+ *
  * Copyright (c) 2004, Ben Fortuna All rights reserved.
  */
 package net.fortuna.toolbag.ui.transition;
@@ -12,10 +12,12 @@ import java.awt.Window;
 
 /**
  * An alert window transition.
- * 
+ *
  * @author benfortuna
  */
 public class SlideOutTransition extends Transition {
+
+    private static final int BOTTOM_INSET = 30;
 
     private Dimension screenSize;
 
@@ -44,8 +46,8 @@ public class SlideOutTransition extends Transition {
         }
         else if (getEdge() == EDGE_BOTTOM) {
             y = screenSize.height
-                    - c.getSize().height
-                    + (int) ((frame / (float) getFrames()) * c.getSize().height);
+                    - (c.getSize().height + BOTTOM_INSET)
+                    + (int) ((frame / (float) getFrames()) * (c.getSize().height + BOTTOM_INSET));
         }
         else if (getEdge() == EDGE_RIGHT) {
             x = screenSize.width - c.getSize().width

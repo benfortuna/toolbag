@@ -42,6 +42,7 @@ public class Alert extends JWindow {
         this.showTransition = new SlideInTransition(edge, FRAME_COUNT);
         this.hideTransition = new SlideOutTransition(edge, FRAME_COUNT);
         this.displayTime = time;
+        setLocation(0, 0);
     }
 
     /**

@@ -92,7 +92,7 @@ public class BooAlert extends Alert {
         //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         //setLocation(screenSize.width-getSize().width,getLocation().y);
         //setLocation(getLocation().x, 20);
-        setLocation(0, 0);
+//        setLocation(0, 0);
     }
     
     /**

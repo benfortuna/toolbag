@@ -22,6 +22,7 @@
  */
 package net.fortuna.toolbag.ui.table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
@@ -44,6 +45,13 @@ public abstract class AbstractObjectTableModel extends AbstractTableModel implem
     private Sorter sorter;
     
     private Filter filter;
+    
+    /**
+     * Default constructor.
+     */
+    public AbstractObjectTableModel() {
+        userObjects = new ArrayList();
+    }
     
     /**
      * @param items The items to set.

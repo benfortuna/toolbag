@@ -2,6 +2,7 @@ package net.fortuna.toolbag.ui;
 
 import java.awt.AWTEvent;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -32,6 +33,8 @@ public class Starfield extends JComponent implements Runnable {
     int viewerDistance;
 
     Thread warpDrive;
+    
+    private boolean running;
 
     Random rng;
 
@@ -83,8 +86,10 @@ public class Starfield extends JComponent implements Runnable {
         // Initialise star locations...
         for (int i = 0; i < getNumberOfStars(); i++) {
             // Create a star at a random (x,y) coordinate on the screen...
-            stars[i] = new Point(rng.nextInt() % (this.getSize().width / 2),
-                    rng.nextInt() % (this.getSize().height / 2));
+            int halfWidth = this.getSize().width / 2;
+            int halfHeight = this.getSize().height / 2;
+            stars[i] = new Point((halfWidth > 0) ? rng.nextInt() % halfWidth : 0,
+                    (halfHeight > 0) ? rng.nextInt() % (this.getSize().height / 2) : 0);
             // Assign each star a random distance from the screen (from
             // 0-100)...
             z[i] = -(Math.abs(rng.nextInt()) % 100);
@@ -97,14 +102,18 @@ public class Starfield extends JComponent implements Runnable {
     }
 
     public void stop() {
+        /*
         if (warpDrive != null && warpDrive.isAlive()) {
             warpDrive.stop();
             warpDrive = null;
         }
+        */
+        running = false;
     }
 
     public void run() {
-        while (warpDrive != null) {
+        running = true;
+        while (running) {
             try {
                 // Sleep for specified duration...
                 Thread.sleep(getWarpDelay());
@@ -112,9 +121,10 @@ public class Starfield extends JComponent implements Runnable {
                 for (int i = 0; i < stars.length; i++) {
                     // If star is past screen, reset to new location...
                     if (z[i] >= 0) {
-                        stars[i] = new Point(rng.nextInt()
-                                % (getSize().width / 2), rng.nextInt()
-                                % (getSize().height / 2));
+                        int halfWidth = this.getSize().width / 2;
+                        int halfHeight = this.getSize().height / 2;
+                        stars[i] = new Point((halfWidth > 0) ? rng.nextInt() % halfWidth : 0,
+                                (halfHeight > 0) ? rng.nextInt() % (this.getSize().height / 2) : 0);
                         z[i] = -(Math.abs(rng.nextInt()) % 100);
                     }
                     // ...otherwise, move closer to screen
@@ -134,8 +144,10 @@ public class Starfield extends JComponent implements Runnable {
 
     public void paintComponent(Graphics g) {
         // Clear screen...
-        g.setColor(getBackground());
-        g.fillRect(0, 0, getSize().width, getSize().height);
+        if (isOpaque()) {
+            g.setColor(getBackground());
+            g.fillRect(0, 0, getSize().width, getSize().height);
+        }
 
         Point star;
 
@@ -198,5 +210,12 @@ public class Starfield extends JComponent implements Runnable {
         f.setVisible(true);
 
         starfield.start();
+    }
+    
+    /* (non-Javadoc)
+     * @see javax.swing.JComponent#getPreferredSize()
+     */
+    public Dimension getPreferredSize() {
+        return new Dimension(50, 50);
     }
 }

@@ -19,7 +19,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public final class DefaultIconSetFactory extends AbstractIconSetFactory {
 
-    private static final String ICONSET_DEFINITION_PATH = "/net/fortuna/toolbag/ui/icon/iconset.xml";
+    private static final String ICONSET_DEFINITION_PATH = "/icons/net/fortuna/toolbag/ui/icon/iconset.xml";
 
     private static Log log = LogFactory.getLog(DefaultIconSetFactory.class);
 

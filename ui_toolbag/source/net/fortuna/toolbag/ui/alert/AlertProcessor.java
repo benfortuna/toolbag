@@ -71,26 +71,23 @@ public class AlertProcessor extends Thread {
 
                 int xOffset = 0;
                 int yOffset = 0;
+                Dimension screenSize = Toolkit.getDefaultToolkit()
+                .getScreenSize();
 
                 if (alert.getEdge() == Transition.EDGE_TOP) {
-                    Dimension screenSize = Toolkit.getDefaultToolkit()
-                            .getScreenSize();
-
                     xOffset = screenSize.width - alert.getWidth()
                             - WINDOW_BUTTONS_WIDTH - (alert.getWidth() * slot)
                             - (WINDOW_GAP * slot);
                 }
                 else if (alert.getEdge() == Transition.EDGE_BOTTOM) {
-                    xOffset = alert.getWidth() * slot + WINDOW_GAP * slot;
+                    xOffset = screenSize.width - alert.getWidth() - (alert.getWidth() * slot) - (WINDOW_GAP * slot);
+                    yOffset = screenSize.height - TASKBAR_HEIGHT;
                 }
                 else if (alert.getEdge() == Transition.EDGE_LEFT) {
                     yOffset = WINDOW_TITLEBAR_HEIGHT
                             + (alert.getHeight() * slot) + (WINDOW_GAP * slot);
                 }
                 else if (alert.getEdge() == Transition.EDGE_RIGHT) {
-                    Dimension screenSize = Toolkit.getDefaultToolkit()
-                            .getScreenSize();
-
                     yOffset = screenSize.height - TASKBAR_HEIGHT
                             - alert.getHeight() - (alert.getHeight() * slot)
                             - (WINDOW_GAP * slot);

@@ -13,7 +13,7 @@ import java.util.LinkedList;
  */
 public final class AlertManager {
 
-    private static final int MAX_ACTIVE = 2;
+    private static final int MAX_ACTIVE = 1;
     
     private static AlertManager instance = new AlertManager();
     

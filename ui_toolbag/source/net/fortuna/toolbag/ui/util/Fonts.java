@@ -13,14 +13,14 @@ public final class Fonts {
      */
     private Fonts() {
     }
-    
+
     /**
      * Encodes a font to a string representation
      * @param font a font to encode
      * @return a string representation of the specified font
      */
     public static String encode(final Font font) {
-        
+
         if (font == null) {
             return null;
         }
@@ -29,23 +29,36 @@ public final class Fonts {
 
         fontBuffer.append(font.getName());
         fontBuffer.append('-');
-        
+
         if (font.isPlain()) {
             fontBuffer.append("PLAIN");
         }
-        
+
         if (font.isBold()) {
             fontBuffer.append("BOLD");
         }
-        
+
         if (font.isItalic()) {
             fontBuffer.append("ITALIC");
         }
-        
+
         fontBuffer.append('-');
         fontBuffer.append(font.getSize());
 
         return fontBuffer.toString();
+    }
+
+    /**
+     * Returns a plain instance of the specified font.
+     * @param font
+     *            used as a base for creating a plain instance
+     * @return a font that is a plain instance of the font specified
+     */
+    public static Font getPlainInstance(final Font font) {
+        if ((Font.ITALIC & font.getStyle()) > 0) {
+            return new Font(font.getFontName(), Font.ITALIC, font.getSize());
+        }
+        return new Font(font.getFontName(), Font.PLAIN, font.getSize());
     }
 
     /**
